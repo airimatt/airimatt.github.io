@@ -1,0 +1,56 @@
+/* when you have the first element then the second it implies that the
+    style should only be applied if the second one is a descendent of the 
+    first one 
+*/
+.mains h4 {
+    line-height: 1em;
+    margin: 0px;
+}
+
+body {
+    background-color: #eaddca;
+    color: #13263a;
+}
+
+ul {
+    margin-top: 0px;
+}
+
+p, ul {
+    margin-bottom: 0px;
+}
+
+/* #mylist {
+
+    margin: 0;
+} */
+
+.icon {
+    float: left;
+    padding: 5px;
+}
+
+.contacts {
+    /* align-items: center; */
+    /* float: left; */
+    content: "";
+    clear: both;
+    display: table;
+}
+
+nav {
+    float: left;
+    width: 30%;
+    background-color: #bdac9c;
+}
+
+article {
+    float: left;
+    width: 70%;
+}
+
+section::after {
+    content: "";
+    display: table;
+    clear: both;
+}
