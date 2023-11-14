@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="UTF-8">
+
+<head>
+    <title> :D </title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+
+
+    <style>
+        .dark-mode {
+            background-color: rgb(68, 67, 67);
+            color: rgb(255, 255, 255);
+        }
+        .light-mode {
+            background-color: rgb(255, 252, 248);
+            color: black;
+        }
+        .icon-light {
+            color: black;
+            background-color: transparent;
+            border: transparent;
+            position: fixed;
+            top: 10px;
+            right: 20px;
+            z-index: 999;
+        } 
+        .icon-light:hover {
+            color: gray;
+            background-color: transparent;
+        }
+        .icon-dark {
+            color: rgb(255, 255, 255);
+            background-color: transparent;
+            border: transparent;
+            top: 10px;
+            right: 20px;
+            z-index: 999;
+        }
+        .icon-dark:hover {
+            color: gray;
+            background-color: transparent;
+        }
+        img {
+            border-radius: 8px;
+            float: right;
+        }
+    </style>
+
+<script>
+    let isDarkMode = localStorage.getItem("darkMode") === "true";
+
+
+    function applyMode() {
+        let element = document.body;
+        let modeIcon = document.getElementById("mode-icon-img");
+        let lightModeIcon = document.getElementById("lightModeIcon");
+        let darkModeIcon = document.getElementById("darkModeIcon");
+        let links = document.querySelectorAll("a");
+
+        if (isDarkMode) {
+            element.className = "dark-mode";
+            modeIcon.src = "icons/sun_darkmode.png";
+            lightModeIcon.style.display = "none";
+            darkModeIcon.style.display = "block";
+            links.forEach(link => {
+                link.style.color = '#ffffff';
+            });
+        } else {
+            element.className = "light-mode";
+            modeIcon.src = "icons/moon_lightmode.png";
+            lightModeIcon.style.display = "block";
+            darkModeIcon.style.display = "none";
+            links.forEach(link => {
+                link.style.color = '#000000';
+            });
+        }
+    }
+
+    function toggleMode() {
+        isDarkMode = !isDarkMode;
+        localStorage.setItem("darkMode", isDarkMode.toString());
+        applyMode();
+    }
+
+    applyMode();
+</script>
+</head>
+
+<body>
+    <button onclick="toggleMode()" class="icon-light">
+        <span class="icon-light">
+            <img id="mode-icon-img" src="icons/moon_lightmode.png" width="25" height="25">
+        </span>
+    </button>
+    <nav class="nav-bar">
+        <a style="text-decoration:none; color: #000000" href="./about.html"> about </a>
+        <!-- <a style="text-decoration:none" href="./resume.html"> resume </a> -->
+        <a style="text-decoration:none; color: #000000" href="resume_ copy.pdf"> resume </a>
+        <a style="text-decoration:none; color: #000000" href="./projects.html"> projects </a>
+        <!-- <a style="text-decoration:none" href="./music.html"> music </a> -->
+        <a style="text-decoration:none; color: #000000" href="https://www.youtube.com/channel/UCccGJOzrD8qGoOSU9h4ZI-w"> music </a>
+    </nav>
+<!-- <font size = "5"> -->
+<span class = "mains"> Projects! </span>
+<!-- </font> -->
+
+<p> I've done some cool stuff... </p>
+<p> JPMorgan Software Engineering Virtual Experience Program on Forage
+<ul>
+    <li>Utilized the Perspective software to monitor stock prices and determine trading strategies</li>
+    <li>Generated a live graph showing stock prices using Typescript, React, and Python</li>
+</ul>
+</p>
+
+<p> RPN (um asm)
+<ul>
+    <li>Implemented a Reverse Polish Notation calculator using the Universal Machine Macro
+        Assembler, a previously developed front end for user-friendly assembly language</li>
+    <li>Adapted a call stack, a value stack, and registers, and developed macros to efficiently
+        carry out operations</li>
+</ul>
+</p>
+
+<p> UM Emulator (C)
+<ul>
+    <li>Created a simple virtual machine that read in 32-bit instructions and carried out tasks
+        accordingly</li>
+    <li>Optimized task performance by an average of 1500% using clean, modular structure</li>
+</ul>
+</p>
+
+<p> Gerp (C++)
+<ul>
+    <li>Developed a replication of the grep Linux utility to search for user-inputed words in a given
+        directory containing numerous files using hashing for efficient data storage and search</li>
+</ul>
+</p>
+
+<div class="icon">
+    <a href = "./index.html">
+        <img src = "icons/home.png"
+        width = "25" height = "25"></a>
+    </div>
+</body>
+</html>

@@ -1,155 +1,135 @@
 <!DOCTYPE html>
 <html lang="en">
     <meta charset="UTF-8">
-    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <head>
         <title> :D </title>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="style.css">
-    </head>
-    
-    <body>
+
+
         <style>
-            div.a {
-                line-height: normal;
+            .dark-mode {
+                background-color: rgb(68, 67, 67);
+                color: rgb(255, 255, 255);
             }
-
+            .light-mode {
+                background-color: rgb(255, 252, 248);
+                color: black;
+            }
+            .icon-light {
+                color: black;
+                background-color: transparent;
+                border: transparent;
+                position: fixed;
+                top: 10px;
+                right: 20px;
+                z-index: 999;
+            } 
+            .icon-light:hover {
+                color: gray;
+                background-color: transparent;
+            }
+            .icon-dark {
+                color: rgb(255, 255, 255);
+                background-color: transparent;
+                border: transparent;
+                top: 10px;
+                right: 20px;
+                z-index: 999;
+            }
+            .icon-dark:hover {
+                color: gray;
+                background-color: transparent;
+            }
         </style>
-        <h1 style = "line-height: 60%"> Airi Matsushita🪴 </h1>
-        <!-- <p> Second year student at Tufts University :) </p> -->
-        
-        <div class = "contacts">
-            <div class = "icon">
-                <a href = "mailto: airi.matsushita@tufts.edu">
-                <img src = "https://www.iconpacks.net/icons/1/free-mail-icon-142-thumb.png" 
-                width = "25" height = "25"> 
-                </a>
-            </div>
-            <div class = "icon">
-                <a href = "https://www.instagram.com/airi_matt/">
-                <img src = "https://cdn-icons-png.flaticon.com/512/87/87390.png"
-                width = "20" height = "20">
-                </a>
-            </div>
-            <div class = "icon">
-                <a href = "https://www.linkedin.com/in/airi-matsushita-774bb6244/">
-                    <img src = "https://cdn-icons-png.flaticon.com/512/1384/1384088.png"
-                    width = "20" height = "20">
-                </a>
-            </div>
-        </div>
-        
-        <fieldset>
-            <legend> About Me :) </legend>
-                I am a second year student at Tufts University, studying 
-                computer science with a minor in music. I am currently a 
-                teaching assistant for Introduction to Computer Science (CS11), 
-                as well as a Japanese Tutor at the StAAR center at Tufts. 
-                In my field of study, I am interested in artificial intelligence, 
-                security, and software development. 
-                Aside from beeping and booping on my laptop, I play the violin 
-                (pretty seriously as a soloist, piano trio member, and concert 
-                mistress of the Tufts Symphony Orchestra! I appreciate music as 
-                a way to temporarily dissociate myself from the chaos of life. 
-                Other interests include traveling, photography, night-drives, 
-                DOGS, cooking (Japanese cuisine), baking, spending time in cafés,
-                 matcha, and of course, ☕.
-                <!-- phone: (914)-325-8146
-                <br>
-                email: airi.matsushita@tufts.edu
-                <br>
-                address: 38 Midland Ave, Rye, NY, 10580 -->
-        </fieldset>
 
-        <br>
 
-        <section>
-        <article>
-        <font size = "5">
-        <span class = "mains"> <strong> Education </strong> </span>
-        </font>
-            <p> <strong > Tufts University, Medford, MA 02155 </strong>
-                <br>
-                <i> Bachelor of Science, Computer Science (GPA: 3.77) </i> </p>
-            <p> Relevant Coursework: 
-                <ul>
-                    <li> Data Structures </li>
-                    <li> Machine Structure and Assembly-Language Programming </li>
-                    <li> Discrete Mathematics </li>
-                    <li> Linear Algebra </li>
-                    <li> Multivariable Calculus </li>
-                    <li> Chemistry Fundamentals </li>
-                    <li> Introduction to Psychology </li>
-                </ul>
-            </p>
+        <script>
+            let isDarkMode = localStorage.getItem("darkMode") === "true" || false;
+
+            function applyMode() {
+            let element = document.body;
+            let modeIcon = document.getElementById("mode-icon-img");
+            let lightModeIcon = document.getElementById("lightModeIcon");
+            let darkModeIcon = document.getElementById("darkModeIcon");
+            let links = document.querySelectorAll("a");
+
+            if (isDarkMode) {
+                element.className = "dark-mode";
+                modeIcon.src = "icons/sun_darkmode.png";
+                lightModeIcon.style.display = "none";
+                darkModeIcon.style.display = "block";
+                links.forEach(link => {
+                    link.style.color = '#ffffff';
+                });
+            } else {
+                element.className = "light-mode";
+                modeIcon.src = "icons/moon_lightmode.png";
+                lightModeIcon.style.display = "block";
+                darkModeIcon.style.display = "none";
+                links.forEach(link => {
+                    link.style.color = '#000000';
+                });
+            }
+        }
+
+        function toggleMode() {
+            isDarkMode = !isDarkMode;
+            localStorage.setItem("darkMode", isDarkMode.toString());
+            applyMode();
+        }
+
+        // Apply mode when the page loads
+        applyMode();
+        </script>
+    </head>
+
+
+    <body>
+        <button onclick="toggleMode()" class="icon-light">
+            <span class="icon-light">
+                <img id="mode-icon-img" src="icons/moon_lightmode.png" width="25" height="25">
+            </span>
+        </button>
         
-        <br>
+        <div class="container">
+            <span>
+                <nav class="nav-bar">
+                    <a style="text-decoration:none; color: #000000" href="./about.html"> about </a>
+                    <!-- <a style="text-decoration:none" href="./resume.html"> resume </a> -->
+                    <a style="text-decoration:none; color: #000000" href="resume_.pdf"> resume </a>
+                    <a style="text-decoration:none; color: #000000" href="./projects.html"> projects </a>
+                    <!-- <a style="text-decoration:none" href="./music.html"> music </a> -->
+                    <a style="text-decoration:none; color: #000000" href="https://www.youtube.com/channel/UCccGJOzrD8qGoOSU9h4ZI-w"> music </a>
+                </nav>
 
-        <font size = "5">
-        <span class = "mains"> <strong> Experience </strong> </span>
-        </font>
-            <p> <strong> ⚘ Tufts University, Department of Computer Science </strong> (Medford, MA 02155)
-                <br>
-                <i>  Teaching Assistant for Intro to Computer Science </i> </p>
-            <p> <strong> ⚘ Tufts University, StAAR Center </strong> (Medford, MA 02155)
-                <br>
-                <i>  On-Call Tutor for Japanese </i> </p>
-            <p> <strong> ⚘ MikiHouse Americas Inc. </strong> (Mount Vernon, NY 10550)
-                <br>
-                <i>  Product Description Translator </i> </p>
+                <div class="name"><h1 style="line-height: 50%">Airi Matsushita</h1></div>
             
-            <br>
-
-        <font size = "5">
-        <span class = "mains"> <strong> Projects (c++) </strong> </span>
-        </font>
-            <p> <strong> Gerp:  </strong> a replication of the grep Linux utility 
-                                            to search for user-inputed words in a 
-                                            given directory containing lots of files </p>
-            <p> <strong> Zap:  </strong> a replication program of ZIP which 
-                                            accomplished lossless data compression and 
-                                            decompression of text and binary files </p>
-            <p> <strong> Metrosim:  </strong> a simulation of the metro system in 
-                                                Boston (the “T”) using Queues that
-                                                monitored a train and managed passengers 
-                                                as they boarded and departed </p>
-
-        </article>
-
-        <nav>
-        <font size = "5">
-            <span class = "mains", style = "margin-left: 5px">
-            <strong> Skills </strong> </span>
-            </font>
-            <p style = "margin-left: 5px"> <strong> Programming Languages </strong>
-            <ul> 
-                <li> C++ </li>
-                <li> Python </li>
-                <li> HTML/CSS </li>
-                <li> Bash/Shell </li>
-            </ul>
-            </p>
-            <p style = "margin-left: 5px"> <strong> Software Packages </strong>
-            <ul>
-                <li> VSCode, Atom </li>
-                <li> Microsoft Excel, PowerPoint, Word </li>
-                <li> Google Docs, Slides, Spreadsheet </li>
-                <li> Adobe Photoshop, Lightroom </li>
-                <li> macOS Pages, Keynote </li>
-                <li> Final Cut Pro </li>
-            </ul>
-            </p>
-            <p style = "margin-left: 5px"> <strong> Spoken Languages </strong>
-            <ul>
-                <li> English (native) </li>
-                <li> Japanese (native) </li>
-                <li> French (intermediate) </li>
-            </ul>
-            </p>
-        </nav>
-        </section>
-
+                <div id="lightModeIcon">
+                    <a href = "mailto: airi.matsushita@tufts.edu" target="_blank">
+                    <img src = "https://img.icons8.com/fluency-systems-regular/48/new-post.png"
+                        width = "32" height = "32"></a>
+                    <a href = "https://github.com/airimatt" target="_blank">
+                    <img src="icons/github-mark.png" width = "27" height = "27"></a>
+                    <a href = "https://www.linkedin.com/in/airi-matsushita-774bb6244/" target="_blank">
+                    <img src="icons/icons8-linkedin-96.png"
+                        width = "32" height = "32"></a>
+                </div>
+                <div id="darkModeIcon" style="display: none;">
+                    <a href = "mailto: airi.matsushita@tufts.edu" target="_blank">
+                    <img src="icons/icons8-email-48.png" width = "32" height = "32"></a>
+                    <a href = "https://github.com/airimatt" target="_blank">
+                    <img src="icons/github-mark-white.png" width = "27" height = "27"></a>
+                    <a href="https://www.linkedin.com/in/airi-matsushita-774bb6244/" target="_blank">
+                    <img src="icons/icons8-linkedin-96 (1).png" width="32" height="32"></a>
+                </div>
+            </span>
+        </div>
     </body>
 </html>

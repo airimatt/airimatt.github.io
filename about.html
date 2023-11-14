@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+    <meta charset="UTF-8">
+    
+    <head>
+        <title> :D </title>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="style.css">
+
+
+        <style>
+            .dark-mode {
+                background-color: rgb(68, 67, 67);
+                color: rgb(255, 255, 255);
+            }
+            .light-mode {
+                background-color: rgb(255, 252, 248);
+                color: black;
+            }
+            .icon-light {
+                color: black;
+                background-color: transparent;
+                border: transparent;
+                position: fixed;
+                top: 10px;
+                right: 20px;
+                z-index: 999;
+            } 
+            .icon-light:hover {
+                color: gray;
+                background-color: transparent;
+            }
+            .icon-dark {
+                color: rgb(255, 255, 255);
+                background-color: transparent;
+                border: transparent;
+                top: 10px;
+                right: 20px;
+                z-index: 999;
+            }
+            .icon-dark:hover {
+                color: gray;
+                background-color: transparent;
+            }
+            img {
+                border-radius: 8px;
+                float: right;
+            }
+        </style>
+
+    <script>
+        let isDarkMode = localStorage.getItem("darkMode") === "true";
+
+
+        function applyMode() {
+            let element = document.body;
+            let modeIcon = document.getElementById("mode-icon-img");
+            let lightModeIcon = document.getElementById("lightModeIcon");
+            let darkModeIcon = document.getElementById("darkModeIcon");
+            let links = document.querySelectorAll("a");
+
+            if (isDarkMode) {
+                element.className = "dark-mode";
+                modeIcon.src = "icons/sun_darkmode.png";
+                lightModeIcon.style.display = "none";
+                darkModeIcon.style.display = "block";
+                links.forEach(link => {
+                    link.style.color = '#ffffff';
+                });
+            } else {
+                element.className = "light-mode";
+                modeIcon.src = "icons/moon_lightmode.png";
+                lightModeIcon.style.display = "block";
+                darkModeIcon.style.display = "none";
+                links.forEach(link => {
+                    link.style.color = '#000000';
+                });
+            }
+        }
+
+        function toggleMode() {
+            isDarkMode = !isDarkMode;
+            localStorage.setItem("darkMode", isDarkMode.toString());
+            applyMode();
+        }
+
+        applyMode();
+    </script>
+</head>
+        
+    <body>
+        <button onclick="toggleMode()" class="icon-light">
+            <span class="icon-light">
+                <img id="mode-icon-img" src="icons/moon_lightmode.png" width="25" height="25">
+            </span>
+        </button>
+        <nav class="nav-bar">
+            <a style="text-decoration:none; color: #000000" href="./about.html"> about </a>
+            <!-- <a style="text-decoration:none" href="./resume.html"> resume </a> -->
+            <a style="text-decoration:none; color: #000000" href="resume_.pdf"> resume </a>
+            <a style="text-decoration:none; color: #000000" href="./projects.html"> projects </a>
+            <!-- <a style="text-decoration:none" href="./music.html"> music </a> -->
+            <a style="text-decoration:none; color: #000000" href="https://www.youtube.com/channel/UCccGJOzrD8qGoOSU9h4ZI-w"> music </a>
+        </nav>
+        <br>
+		<p>
+            Hello! I am a junior at Tufts University studying computer science 
+            with a minor in mathematics and music, as well as a teaching assistant 
+            for Introduction to Computer Science 
+            (<a href="https://www.cs.tufts.edu/comp/11/">cs11</a>). 
+            As a determined, organized student enthusiastic about expanding my 
+            skillset, embracing new technologies, tackling challenges, and solving 
+            real-world problems, I thrive on opportunities that offer fresh 
+            perspectives, welcome challenges, and foster collaboration with 
+            diverse teams. Some of my interests include software engineering, 
+            artificial intelligence, cyber security, healthcare, and web development. 
+            I created this website to introduce myself in a more fun way than 
+            with just my resume. Feel free to explore around!
+            <br>
+            <img src="pics/me.png" width="150" height="150">
+            <img src="pics/me2.png" width="150" height="150">
+        </p>
+        <p>
+            Aside from beeping and booping on my laptop, I am a violinist in 
+            a piano trio and the Tufts Symphony Orchestra (TSO)! I appreciate 
+            music as a way to temporarily dissociate myself from the chaos of 
+            life. I have a strong passion in my musical pursuits and recently 
+            had a chance to perform as a soloist with TSO as a winner of the 
+            annual concerto competition. You can check out my performance on the  
+            <a href="./music.html">music</a> page!
+            <br>
+            <img src="pics/trio.png" width="150" height="150">
+        </p>
+        <p>
+            Other interests include traveling, photography, night-drives, 
+            cooking (Japanese cuisine), baking, spending time in cafés, matcha, 
+            and ☕. I am also a huuuge dog person and adore my miniature 
+            schuauzer more than anything.
+            <br>
+            <img src="pics/mimi.png" width="150" height="150">
+        </p>
+        <p>
+            I'm currently on the hunt for an internship, where my goal is to 
+            gain professional experience, applying my knowledge in a real-world 
+            context, and learning from experienced mentors while contributing to 
+            innovative projects.
+		</p>
+		<br>
+        <div class="icon">
+            <a href = "./index.html">
+                <img src = "icons/home.png"
+                width = "25" height = "25"></a>
+        </div>
+      </body>
+    </html>
